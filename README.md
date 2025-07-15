@@ -1,8 +1,12 @@
-![Start background image for GitHub's README](public/startbgforgithub.jpg)
+![Start background image for GitHub's README](public/bannedmd.jpg)
 
-# Project Mesa Client
+# Project Mayo Client
 
-This is the client-side code for the Project Mesa desktop application. It is built using Vue.js + Vite and Tauri.
+This is the client-side code for the Project Mayo desktop application. It is built using Vue.js + Vite and Tauri.
+
+> What is Mayo?
+
+Mayo is a fork of Mesa, aims to have better performance and more functions.
 
 > Why you choose Tauri?
 
@@ -18,12 +22,12 @@ Before doing all of these steps, you need do prerequisites from [Tauri](https://
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/standard-group/mesa-client.git
+git clone https://github.com/noooooobie/mayo-client.git
 ```
 
 2. Change the directory to the project:
 ```bash
-cd mesa-client
+cd mayo-client
 ```
 
 3. Install the dependencies:
