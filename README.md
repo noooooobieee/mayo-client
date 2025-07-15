@@ -69,6 +69,10 @@ pnpm tauri build # or npm run tauri build
 
 This will create a `dist` directory in the project root, which contains the built application files.
 
+## Contact (Mayo)
+
+Join my [discord server](https://discord.gg/UKDBb3Ymyw).
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
@@ -80,5 +84,13 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 > *why our donations via donationalerts?*
 
 cuz we are two dumb teenagers and we are from different countries, so we cant send money to each other. donationalerts is only a one way for us.
+
+## Donate (Mayo)
+
+[![Donate using Ko-fi](public/donate.svg)](https://ko-fi.com/blue16th)
+
+> *Why my donations only via ko-fi?*
+
+I use ko-fi because i can get money instantly to my Paypal, as well Stripe. Also it has more functions.
 
 *donations are appreciated, but not required.*
