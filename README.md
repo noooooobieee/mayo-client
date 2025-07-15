@@ -1,4 +1,4 @@
-![Start background image for GitHub's README](public/bannedmd.png)
+![Start background image for GitHub's README](public/bannermd.png)
 
 # Project Mayo Client
 
