@@ -27,16 +27,17 @@ jobs:
           sudo apt-get install -y \
             libwebkit2gtk-4.0-dev \
             libgtk-3-dev \
-            libgdk-3-dev \
-            libsoup-2.4-dev \
+            libglib2.0-dev \
             libappindicator3-dev \
             librsvg2-dev \
-            libglib2.0-dev \
+            libsoup-3.0-dev \
             pkg-config \
             build-essential \
             curl \
             wget \
             libssl-dev
+
+          
 
 
 
