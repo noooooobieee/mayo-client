@@ -34,7 +34,7 @@ fn get_key_storage_path(app_handle: &AppHandle) -> Result<PathBuf, String> {
         .path()
         .app_config_dir()
         .map_err(|e| format!("Failed to find config dir: {}", e))?;
-    let path = dir.join("mesa").join("private_key.json");
+    let path = dir.join("mayo").join("private_key.json");
     Ok(path)
 }
 
@@ -211,7 +211,7 @@ fn get_build_version() -> String {
     let build_date = env!("BUILD_DATE");
     let git_commit = env!("GIT_COMMIT");
 
-    let build_type = option_env!("MESA_BUILD_TYPE").unwrap_or("release");
+    let build_type = option_env!("MAYO_BUILD_TYPE").unwrap_or("release");
 
     match build_type {
         "release" => format!("v{}", base_version),

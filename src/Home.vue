@@ -42,7 +42,7 @@ const closeWindow = async () => {
 <template>
     <main class="app-container">
         <div class="titlebar">
-            <div class="titlebar-title">Project Mesa</div>
+            <div class="titlebar-title">Project Mayo</div>
             <div class="titlebar-controls">
                 <button class="titlebar-button minimize" @click.stop="minimizeWindow" type="button">
                     <svg width="16" height="16" viewBox="0 0 16 16">
@@ -64,14 +64,14 @@ const closeWindow = async () => {
 
         <div class="header-section">
             <div class="logo-container">
-                <img src="/logo.svg" alt="Project Mesa Logo" class="main-logo" />
+                <img src="/logo.svg" alt="Project Mayo Logo" class="main-logo" />
             </div>
         </div>
 
         <div class="content-section">
             <div class="welcome-container">
-                <h1 class="app-title">Project Mesa</h1>
-                <p class="app-subtitle">Welcome to the official Project Mesa desktop app.</p>
+                <h1 class="app-title">Project Mayo</h1>
+                <p class="app-subtitle">Welcome to the official Project Mayo desktop app.</p>
                 <p class="app-description">It's fast and secure.</p>
 
                 <button class="start-button" @click="startMessaging">

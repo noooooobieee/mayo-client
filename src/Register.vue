@@ -139,7 +139,7 @@ const closeWindow = async () => {
                             stroke-linejoin="round" fill="none" />
                     </svg>
                 </button>
-                <div class="titlebar-title">Project Mesa - Register</div>
+                <div class="titlebar-title">Project Mayo - Register</div>
             </div>
             <div class="titlebar-controls">
                 <button class="titlebar-button minimize" @click.stop="minimizeWindow" type="button">
@@ -163,8 +163,8 @@ const closeWindow = async () => {
         <div class="register-container">
             <div class="register-content">
                 <div class="logo-section">
-                    <img src="/logo.svg" alt="Project Mesa Logo" class="register-logo" />
-                    <h1 class="register-title">Project Mesa</h1>
+                    <img src="/logo.svg" alt="Project Mayo Logo" class="register-logo" />
+                    <h1 class="register-title">Project Mayo</h1>
                     <p class="register-subtitle">Create your account</p>
                 </div>
 

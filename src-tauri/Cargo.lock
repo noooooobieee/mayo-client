@@ -2306,7 +2306,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "mesa-client"
+name = "mayo-client"
 version = "0.1.0"
 dependencies = [
  "aes-gcm",

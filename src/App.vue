@@ -12,7 +12,7 @@ import { getCurrentWindow, LogicalSize } from "@tauri-apps/api/window";
 import { invoke } from '@tauri-apps/api/core';
 
 const version = await invoke<string>('get_build_version');
-console.log("Mesa Version:", version);
+console.log("Mayo Version:", version);
 
 onMounted(async () => {
   try {

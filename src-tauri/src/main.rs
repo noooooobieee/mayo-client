@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    mesa_client_lib::run()
+    mayo_client_lib::run()
 }
