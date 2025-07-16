@@ -64,7 +64,7 @@ const closeWindow = async () => {
 
         <div class="header-section">
             <div class="logo-container">
-                <img src="/logo.svg" alt="Project Mayo Logo" class="main-logo" />
+                <img src="/logo.webp" alt="Project Mayo Logo" class="main-logo" />
             </div>
         </div>
 

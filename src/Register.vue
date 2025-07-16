@@ -163,7 +163,7 @@ const closeWindow = async () => {
         <div class="register-container">
             <div class="register-content">
                 <div class="logo-section">
-                    <img src="/logo.svg" alt="Project Mayo Logo" class="register-logo" />
+                    <img src="/logo.webp" alt="Project Mayo Logo" class="register-logo" />
                     <h1 class="register-title">Project Mayo</h1>
                     <p class="register-subtitle">Create your account</p>
                 </div>
