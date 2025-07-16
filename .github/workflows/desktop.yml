@@ -97,7 +97,7 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: mesa-client-nightly-${{ matrix.os }}-${{ steps.date.outputs.date }}
+          name: mayo-client-nightly-${{ matrix.os }}-${{ steps.date.outputs.date }}
           path: |
             src-tauri/target/release/bundle/msi/
             src-tauri/target/release/bundle/nsis/

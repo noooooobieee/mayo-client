@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "mesa build tool"
+echo "mayo build tool"
 echo "select build type (1-5)"
 echo "1. stable"
 echo "2. beta"
@@ -13,23 +13,23 @@ read -r -p "enter your choice (1-5): " choice
 
 case "$choice" in
   1)
-    export MESA_BUILD_TYPE=release
+    export MAYO_BUILD_TYPE=release
     echo "building Stable..."
     ;;
   2)
-    export MESA_BUILD_TYPE=beta
+    export MAYO_BUILD_TYPE=beta
     echo "building Beta..."
     ;;
   3)
-    export MESA_BUILD_TYPE=nightly
+    export MAYO_BUILD_TYPE=nightly
     echo "building Nightly..."
     ;;
   4)
-    export MESA_BUILD_TYPE=debug
+    export MAYO_BUILD_TYPE=debug
     echo "building Debug..."
     ;;
   5)
-    export MESA_BUILD_TYPE=internal
+    export MAYO_BUILD_TYPE=internal
     echo "building Dev Build..."
     ;;
   *)
@@ -39,10 +39,10 @@ case "$choice" in
 esac
 
 echo ""
-echo "MESA_BUILD_TYPE=$MESA_BUILD_TYPE"
+echo "MAYO_BUILD_TYPE=$MAYO_BUILD_TYPE"
 echo "Running: pnpm tauri build"
 echo ""
 
 pnpm tauri build
 
-unset MESA_BUILD_TYPE
+unset MAYO_BUILD_TYPE

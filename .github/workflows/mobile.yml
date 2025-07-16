@@ -176,6 +176,6 @@ jobs:
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: mesa-android-nightly-${{ steps.date.outputs.date }}
+          name: mayo-android-nightly-${{ steps.date.outputs.date }}
           path: |
             src-tauri/gen/android/app/build/outputs/apk/**/*.apk
