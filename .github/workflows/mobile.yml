@@ -22,29 +22,25 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          run_install: false
+        with: { version: 10, run_install: false }
 
       - name: Install Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "pnpm"
+        with: { node-version: "22", cache: "pnpm" }
 
       - name: Install Rust + Android targets
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android
+          {
+            targets: "aarch64-linux-android,armv7-linux-androideabi,i686-linux-android,x86_64-linux-android",
+          }
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
-        with:
-          java-version: "17"
-          distribution: "temurin"
+        with: { java-version: "17", distribution: "temurin" }
 
       # ------------------------------------------------------------------
-      #  Download & install the exact NDK r25b (25.2.9519653)
+      #  NDK 25.2.9519653 (r25b)
       # ------------------------------------------------------------------
       - name: Download & install NDK 25.2.9519653
         run: |
@@ -56,13 +52,9 @@ jobs:
           echo "ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/25.2.9519653" >> $GITHUB_ENV
           echo "NDK_HOME=$ANDROID_SDK_ROOT/ndk/25.2.9519653" >> $GITHUB_ENV
           echo "ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/25.2.9519653" >> $GITHUB_ENV
-
       - name: Sanity-check NDK
         run: |
           test -f "$ANDROID_NDK_ROOT/source.properties" || { echo "NDK broken"; exit 1; }
-          echo "✅ NDK ready at $ANDROID_NDK_ROOT"
-
-      # ------------------------------------------------------------------
       - name: Install Android SDK components
         uses: android-actions/setup-android@v3
         with:
@@ -70,7 +62,22 @@ jobs:
             platform-tools
             platforms;android-34
             build-tools;34.0.0
-
+      # ------------------------------------------------------------------
+      #  Rust linker overrides
+      # ------------------------------------------------------------------
+      - name: Create .cargo/config.toml
+        run: |
+          mkdir -p .cargo
+          cat > .cargo/config.toml <<'EOF'
+          [target.aarch64-linux-android]
+          linker = "aarch64-linux-android24-clang"
+          [target.armv7-linux-androideabi]
+          linker = "armv7a-linux-androideabi24-clang"
+          [target.i686-linux-android]
+          linker = "i686-linux-android24-clang"
+          [target.x86_64-linux-android]
+          linker = "x86_64-linux-android24-clang"
+          EOF
       - name: Install frontend deps
         run: pnpm install
 
@@ -80,6 +87,80 @@ jobs:
           JAVA_HOME: ${{ env.JAVA_HOME }}
           ANDROID_HOME: ${{ env.ANDROID_SDK_ROOT }}
           NDK_HOME: ${{ env.NDK_HOME }}
+
+      # ------------------------------------------------------------------
+      #  Fix Android Gradle Plugin application
+      # ------------------------------------------------------------------
+      - name: Fix Android Gradle Plugin
+        run: |
+          # Find the app-level build.gradle.kts file
+          APP_GRADLE=$(find src-tauri/gen/android -name 'build.gradle.kts' -path '*/app/*' | head -n1)
+
+          # Check if it's a Kotlin DSL file (.kts) or Groovy (.gradle)
+          if [[ "$APP_GRADLE" == *.kts ]]; then
+            # For Kotlin DSL, ensure proper plugin application
+            if ! grep -q "id(\"com.android.application\")" "$APP_GRADLE"; then
+              sed -i '1i\plugins {\n    id("com.android.application")\n    id("org.jetbrains.kotlin.android")\n}' "$APP_GRADLE"
+            fi
+          else
+            # For Groovy, find the regular build.gradle file
+            APP_GRADLE=$(find src-tauri/gen/android -name 'build.gradle' -path '*/app/*' | head -n1)
+            if ! grep -q "id 'com.android.application'" "$APP_GRADLE"; then
+              sed -i '1i\plugins {\n    id '\''com.android.application'\''\n    id '\''org.jetbrains.kotlin.android'\''\n}' "$APP_GRADLE"
+            fi
+          fi
+      # ------------------------------------------------------------------
+      #  Create debug keystore and configure signing
+      # ------------------------------------------------------------------
+      - name: Create debug keystore
+        run: |
+          mkdir -p .ci
+          keytool -genkey -v -keystore .ci/upload-keystore.jks \
+            -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 \
+            -alias upload -storepass android -keypass android \
+            -dname "CN=CI,OU=CI,O=CI,L=CI,S=CI,C=US"
+      - name: Configure signing
+        run: |
+          APP_GRADLE=$(find src-tauri/gen/android -name 'build.gradle*' -path '*/app/*' | head -n1)
+          KEYSTORE_PATH="$(pwd)/.ci/upload-keystore.jks"
+
+          if [[ "$APP_GRADLE" == *.kts ]]; then
+              sed -i "/^android {/a\
+              signingConfigs {\n\
+                  create(\"ci\") {\n\
+                  storeFile = file(\"$KEYSTORE_PATH\")\n\
+                  storePassword = \"android\"\n\
+                  keyAlias = \"upload\"\n\
+                  keyPassword = \"android\"\n\
+              }\n\
+            }\n\
+            buildTypes {\n\
+                getByName(\"debug\") {\n\
+                    signingConfig = signingConfigs.getByName(\"ci\")\n\
+                }\n\
+                getByName(\"release\") {\n\
+                    signingConfig = signingConfigs.getByName(\"ci\")\n\
+                }\n\
+            }" "$APP_GRADLE"
+          else
+            sed -i "/^android {/a\
+            signingConfigs {\n\
+                ci {\n\
+                    storeFile file(\"$KEYSTORE_PATH\")\n\
+                    storePassword \"android\"\n\
+                    keyAlias \"upload\"\n\
+                    keyPassword \"android\"\n\
+                }\n\
+            }\n\
+            buildTypes {\n\
+                debug {\n\
+                    signingConfig signingConfigs.ci\n\
+                }\n\
+                release {\n\
+                    signingConfig signingConfigs.ci\n\
+                }\n\
+            }" "$APP_GRADLE"
+          fi
 
       - name: Build APK for all targets
         run: pnpm tauri android build --apk

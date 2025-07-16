@@ -1,0 +1,19 @@
+android {
+    signingConfigs {
+        ci {
+            storeFile rootProject.file('../.ci/upload-keystore.jks')
+            storePassword "android"
+            keyAlias "upload"
+            keyPassword "android"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.ci
+        }
+        debug {
+            signingConfig signingConfigs.ci
+        }
+    }
+}   
