@@ -71,7 +71,7 @@ This will create a `dist` directory in the project root, which contains the buil
 
 ## Contact (Mayo)
 
-Join my [discord server](https://discord.gg/UKDBb3Ymyw).
+Join my [discord server](https://discord.gg/UKDBb3Ymyw)!
 
 ## License
 
