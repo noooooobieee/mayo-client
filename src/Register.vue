@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { ref, watch, onMounted } from "vue"; // Added onMounted
+import { ref, watch } from "vue"; // Added watch
 import { useRouter } from 'vue-router';
 import { invoke } from "@tauri-apps/api/core";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { type as getOsType } from "@tauri-apps/api/os"; // Added for platform detection
 
 // TODO: Implement this all later and better (localstorage encryption)
 
@@ -19,26 +18,6 @@ const errorMessage = ref("");
 const defaultServerAddress = "standard.qzz.io";
 const useDefaultServer = ref(true);
 const customServerAddress = ref("");
-
-const isMobile = ref(false); // New state to track mobile platform
-
-// Check the OS type when the component is mounted
-onMounted(async () => {
-    try {
-        const osType = await getOsType();
-        // Acode runs on Android, so we check for 'android' or 'ios'
-        if (osType === 'android' || osType === 'ios') {
-            isMobile.value = true;
-        }
-    } catch (e) {
-        console.error("Failed to get OS type, assuming not mobile.", e);
-        // Fallback for environments where the API might not be available
-        if (navigator.userAgent.toLowerCase().includes("android")) {
-            isMobile.value = true;
-        }
-    }
-});
-
 
 watch(useDefaultServer, (newValue) => {
     if (newValue) {
@@ -160,10 +139,9 @@ const closeWindow = async () => {
                             stroke-linejoin="round" fill="none" />
                     </svg>
                 </button>
-                <div class="titlebar-title">Project Mayo - Register</div>
+                <div class="titlebar-title">Project Mesa - Register</div>
             </div>
-            <!-- These controls will only be shown on non-mobile platforms -->
-            <div v-if="!isMobile" class="titlebar-controls">
+            <div class="titlebar-controls">
                 <button class="titlebar-button minimize" @click.stop="minimizeWindow" type="button">
                     <svg width="16" height="16" viewBox="0 0 16 16">
                         <rect x="3" y="7" width="10" height="2" fill="currentColor" />
@@ -185,8 +163,8 @@ const closeWindow = async () => {
         <div class="register-container">
             <div class="register-content">
                 <div class="logo-section">
-                    <img src="/logo.webp" alt="Project Mayo Logo" class="register-logo" />
-                    <h1 class="register-title">Project Mayo</h1>
+                    <img src="/logo.webp" alt="Project Mesa Logo" class="register-logo" />
+                    <h1 class="register-title">Project Mesa</h1>
                     <p class="register-subtitle">Create your account</p>
                 </div>
 
