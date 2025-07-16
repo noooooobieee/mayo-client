@@ -382,7 +382,6 @@ const closeWindow = async () => {
 .register-logo {
     width: 80px;
     height: 80px;
-    filter: brightness(0) invert(1);
     margin-bottom: 1rem;
     object-fit: contain;
 }

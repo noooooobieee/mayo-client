@@ -201,7 +201,6 @@ const closeWindow = async () => {
 .main-logo {
     width: clamp(80px, 20vw, 180px);
     height: clamp(80px, 20vw, 180px);
-    filter: brightness(0) invert(1);
     z-index: 2;
     position: relative;
     object-fit: contain;
