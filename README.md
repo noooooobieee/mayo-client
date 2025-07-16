@@ -17,11 +17,11 @@ Mayo is a fork of Mesa, aims to have better performance and more functions.
 
 > Why you choose Tauri?
 
-Tauri offers almos the same functionality as Electron, but with a more modern, faster and low-memory eater. It also has a better developer experience, as it is written in Rust and uses the WebView2 API for rendering.
+Tauri offers almost the same functionality as Electron, but with a more modern, faster and low-memory eater. It also has a better developer experience, as it is written in Rust and uses the WebView2 API for rendering.
 
 ## Getting Started
 
-To get started, you need to have Node.js and Rust installed on your machine. We recommend using the latest LTS version of Node.js, version 22.1x.x or higher.
+To install and run the client, go grab our latest release from [here](https://github.com/standard-group/mesa-client/releases/latest) for your platform. 
 
 As well, we recommend using the `pnpm` package manager, instead of `npm`, but you still can use `npm` if you prefer. (we did not tested it)
 
@@ -55,6 +55,10 @@ pnpm tauri init android # or npm run tauri init android
 
 Now you can run and test our app, as well help us contribute to the project.
 
+OR,
+
+If you want nightly builds, you can find them [here for desktop](https://github.com/standard-group/mesa-client/actions/workflows/desktop.yml) and [here for mobile (Android)](https://github.com/standard-group/mesa-client/actions/workflows/mobile.yml).
+
 ## Contributing
 
 We welcome contributions to the project. If you want to contribute, please follow steps in [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -66,15 +70,9 @@ The project is structured as follows:
 - `src-tauri`: This directory contains the Tauri configuration files, including the `tauri.conf.json` file, which is used to configure the Tauri application.
 - `src`: This directory contains the source code for the client-side application. (frontend in Vue)
 
-## Building and Running
+## Building from Source
 
-To build the application, run the following command:
-
-```bash
-pnpm tauri build # or npm run tauri build
-```
-
-This will create a `dist` directory in the project root, which contains the built application files.
+Please read [BUILDING.md](BUILDING.md) for more information.
 
 ## Contact (Mayo)
 
