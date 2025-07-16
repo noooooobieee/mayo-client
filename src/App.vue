@@ -1,18 +1,37 @@
 <template>
   <router-view v-slot="{ Component }">
-    <Transition name="slide-left" mode="out-in">
+    <!-- The "name" is now dynamic based on the transitionName ref -->
+    <Transition :name="transitionName" mode="out-in">
       <component :is="Component" class="router-view-content" />
     </Transition>
   </router-view>
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, ref, watch } from "vue";
+import { useRoute } from 'vue-router';
 import { getCurrentWindow, LogicalSize } from "@tauri-apps/api/window";
 import { invoke } from '@tauri-apps/api/core';
 
 const version = await invoke<string>('get_build_version');
 console.log("Mayo Version:", version);
+
+// ---- NEW CODE FOR ANIMATION ----
+const route = useRoute();
+const transitionName = ref('slide-left'); // Default to forward animation
+
+// Watch for route changes
+watch(
+  () => route.meta,
+  (toMeta, fromMeta) => {
+    const toDepth = (toMeta.depth as number) || 0;
+    const fromDepth = (fromMeta.depth as number) || 0;
+    // If navigating to a "shallower" page, slide right (back)
+    // Otherwise, slide left (forward)
+    transitionName.value = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+  }
+);
+// ---- END OF NEW CODE ----
 
 onMounted(async () => {
   try {
@@ -97,18 +116,33 @@ a:hover {
   left: 0;
 }
 
+/* --- UPDATED/NEW CSS FOR ANIMATIONS --- */
+
+/* Shared transition properties for both directions */
 .slide-left-enter-active,
-.slide-left-leave-active {
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
   transition: all 0.3s ease-out;
 }
 
+/* SLIDE LEFT (Forward) */
 .slide-left-enter-from {
   transform: translateX(100%);
   opacity: 0;
 }
-
 .slide-left-leave-to {
   transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* SLIDE RIGHT (Back) - The new animation */
+.slide-right-enter-from {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.slide-right-leave-to {
+  transform: translateX(100%);
   opacity: 0;
 }
 </style>

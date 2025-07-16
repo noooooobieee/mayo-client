@@ -1,9 +1,9 @@
-name: Mobile Build Mesa (nightly)
+name: Mobile Build Mayo (nightly)
 
 on:
   workflow_dispatch:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
     branches: [main]
 

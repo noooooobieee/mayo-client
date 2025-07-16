@@ -1,9 +1,9 @@
-name: Desktop Build Mesa (nightly)
+name: Desktop Build Mayo (nightly)
 
 on:
   workflow_dispatch:
   push:
-    branches: [dev]
+    branches: [main]
   pull_request:
     branches: [main]
 
