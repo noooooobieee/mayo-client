@@ -7,7 +7,7 @@
     <img alt="Discord" src="https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&logoColor=white" href="https://sdiscord.gg/Z997UBvFJ4">
 </div>
 
-# Project Mesa Client
+# Project Mayo Client
 
 This is the client-side code for the Project Mayo desktop application. It is built using Vue.js + Vite and Tauri.
 
