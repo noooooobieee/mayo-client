@@ -103,8 +103,8 @@ const goBack = () => {
         <div class="register-container">
             <div class="register-content">
                 <div class="logo-section">
-                    <img src="/logo.webp" alt="Project Mesa Logo" class="register-logo" />
-                    <h1 class="register-title">Project Mesa</h1>
+                    <img src="/logo.webp" alt="Project Mayo Logo" class="register-logo" />
+                    <h1 class="register-title">Project Mayo</h1>
                     <p class="register-subtitle">Create your account</p>
                 </div>
 

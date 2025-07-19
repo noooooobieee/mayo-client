@@ -7,7 +7,7 @@
             stroke-linejoin="round" fill="none" />
         </svg>
       </button>
-      <div class="titlebar-title">Project Mesa - {{ version }}</div>
+      <div class="titlebar-title">Project Mayo - {{ version }}</div>
     </div>
     <div class="titlebar-controls">
       <button class="titlebar-button minimize" @click.stop="minimize" type="button">
@@ -95,7 +95,7 @@ const goBack = () => {
 
 /* build */
 
-console.log('Mesa Version:', version);
+console.log('Mayo Version:', version);
 </script>
 
 <style>

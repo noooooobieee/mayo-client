@@ -10,12 +10,12 @@ Before doing all of these steps, you need do prerequisites from [Tauri](https://
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/standard-group/mesa-client.git
+git clone https://github.com/standard-group/mayo-client.git
 ```
 
 2. Change the directory to the project:
 ```bash
-cd mesa-client
+cd mayo-client
 ```
 
 3. Install the dependencies:

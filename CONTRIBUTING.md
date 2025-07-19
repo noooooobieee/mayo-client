@@ -1,8 +1,8 @@
 ![Start background image for GitHub's README](public/startbgforgithub.jpg)
 
-# Contributing to Project Mesa Client
+# Contributing to Project Mayo Client
 
-Thank you for your interest in contributing to the Project Mesa Client! We welcome all kinds of contributions, whether it's code, documentation, bug reports, or suggestions.
+Thank you for your interest in contributing to the Project Mayo Client! We welcome all kinds of contributions, whether it's code, documentation, bug reports, or suggestions.
 
 Please make sure to make Pull Requests to the `dev` branch, as there, your feature/fix will be merged later into `main` branch.
 
@@ -15,8 +15,8 @@ Please make sure to make Pull Requests to the `dev` branch, as there, your featu
 2. **Clone your fork**
 
    ```bash
-   git clone https://github.com/your-username/mesa-client.git
-   cd mesa-client
+   git clone https://github.com/your-username/mayo-client.git
+   cd mayo-client
    ```
 
 3. **Create a new branch**
@@ -68,4 +68,4 @@ By contributing, you agree that your contributions will be licensed under the MI
 
 ---
 
-Thank you for helping make Project Mesa Client better!
+Thank you for helping make Project Mayo Client better!

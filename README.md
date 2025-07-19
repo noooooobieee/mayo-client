@@ -3,7 +3,7 @@
 <div align="center">
     <img alt="Desktop Build Mayo (nightly)" src="https://github.com/noooooobieee/mayo-client/actions/workflows/desktop.yml/badge.svg?branch=main" href="https://github.com/noooooobieee/mayo-client/actions/workflows/desktop.yml">
     <img alt="Mobile Build Mayo (nightly)" src="https://github.com/noooooobieee/mayo-client/actions/workflows/mobile.yml/badge.svg?branch=main" href="https://github.com/noooooobieee/mayo-client/actions/workflows/mobile.yml">
-    <img alt="Matrix" src="https://img.shields.io/matrix/project-mesa-room%3Amatrix.org?style=flat&logo=matrix" href="https://matrix.to/#/#project-mesa-room:matrix.org">
+    <img alt="Matrix" src="https://img.shields.io/matrix/project-mayo-room%3Amatrix.org?style=flat&logo=matrix" href="https://matrix.to/#/#project-mayo-room:matrix.org">
     <img alt="Discord" src="https://img.shields.io/badge/Discord-7289DA?style=flat&logo=discord&logoColor=white" href="https://sdiscord.gg/Z997UBvFJ4">
 </div>
 
@@ -13,7 +13,7 @@ This is the client-side code for the Project Mayo desktop application. It is bui
 
 > What is Mayo?
 
-Mayo is a fork of Mesa, aims to have better performance and more functions.
+Mayo is a fork of Mayo, aims to have better performance and more functions.
 
 > Why you choose Tauri?
 
@@ -21,7 +21,7 @@ Tauri offers almost the same functionality as Electron, but with a more modern, 
 
 ## Getting Started
 
-To install and run the client, go grab our latest release from [here](https://github.com/standard-group/mesa-client/releases/latest) for your platform. 
+To install and run the client, go grab our latest release from [here](https://github.com/standard-group/mayo-client/releases/latest) for your platform. 
 
 As well, we recommend using the `pnpm` package manager, instead of `npm`, but you still can use `npm` if you prefer. (we did not tested it)
 
@@ -57,7 +57,7 @@ Now you can run and test our app, as well help us contribute to the project.
 
 OR,
 
-If you want nightly builds, you can find them [here for desktop](https://github.com/standard-group/mesa-client/actions/workflows/desktop.yml) and [here for mobile (Android)](https://github.com/standard-group/mesa-client/actions/workflows/mobile.yml).
+If you want nightly builds, you can find them [here for desktop](https://github.com/standard-group/mayo-client/actions/workflows/desktop.yml) and [here for mobile (Android)](https://github.com/standard-group/mayo-client/actions/workflows/mobile.yml).
 
 ## Contributing
 
